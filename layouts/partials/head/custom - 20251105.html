@@ -1,0 +1,55 @@
+<script>
+/* 全域配色控制 - 在所有腳本之前執行 */
+(function () {
+  'use strict';
+  
+  var KEY = 'StackColorScheme';
+  var root = document.documentElement;
+  
+  // 讀取並立即套用
+  function applyScheme() {
+    var saved = localStorage.getItem(KEY);
+    var scheme;
+    
+    if (saved === 'dark' || saved === 'light') {
+      scheme = saved;
+    } else {
+      // auto 或首次訪問
+      scheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    
+    root.dataset.scheme = scheme;
+    root.setAttribute('data-scheme', scheme); // 雙重保險
+  }
+  
+  // 立即執行
+  applyScheme();
+  
+  // 監聽 pageshow 事件（處理返回上一頁的情況）
+  window.addEventListener('pageshow', applyScheme);
+  
+  // 監聽 DOMContentLoaded（確保 DOM 載入後再次檢查）
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyScheme);
+  }
+  
+  // 防止被其他腳本覆蓋的監控機制
+  var observer = new MutationObserver(function(mutations) {
+    var expected = localStorage.getItem(KEY);
+    if (!expected) {
+      expected = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    } else if (expected === 'auto') {
+      expected = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    
+    if (root.dataset.scheme !== expected) {
+      root.dataset.scheme = expected;
+    }
+  });
+  
+  observer.observe(root, { 
+    attributes: true, 
+    attributeFilter: ['data-scheme'] 
+  });
+})();
+</script>

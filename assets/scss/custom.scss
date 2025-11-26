@@ -1,0 +1,192 @@
+
+/* 置中與基礎樣式（同時相容兩種 class） */
+.sidebar .menu, .left-sidebar .menu {
+  text-align: center;
+  padding-left: 0 !important;
+}
+
+.sidebar .menu li a,
+.left-sidebar .menu li a {
+  display: block;
+  padding: 6px 8px;
+  color: #475569 !important;         /* 預設字色（灰藍） */
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color .2s ease, background-color .2s ease;
+  font-weight: 500;
+}
+
+/* 隱藏所有 icon（保險） */
+.sidebar .menu svg, .sidebar .menu .icon,
+.left-sidebar .menu svg, .left-sidebar .menu .icon {
+  display: none !important;
+}
+
+/* 強化 hover 權重 */
+.sidebar .menu li:hover > a,
+.sidebar .menu li a:hover,
+.sidebar .menu li a:focus-visible,
+.left-sidebar .menu li:hover > a,
+.left-sidebar .menu li a:hover,
+.left-sidebar .menu li a:focus-visible {
+  color: #6b7fb8 !important;          /* hover 字色 */
+  background: rgba(107,127,184,.08);  /* 淡底色 */
+}
+
+/* 當前頁 */
+.sidebar .menu li.active > a,
+.left-sidebar .menu li.active > a {
+  color: #0f172a !important;
+  font-weight: 700;
+  background: rgba(15,23,42,.06);
+}
+
+.site-avatar .site-logo {
+width: 300px;
+height: 300px;
+border-radius: 50%;
+object-fit: cover; /* 確保裁切中心、避免變形 */
+box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+/* 右側搜尋卡片（這版是 form.search-form.widget） */
+.right-sidebar .search-form.widget{
+  max-width: 240px;
+  margin-left: auto;
+  display: block;
+  background: var(--card-background, #fff);
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* 輸入框本體 */
+.right-sidebar .search-form.widget input[name="keyword"]{
+  width: 100%;
+  border-radius: 8px;
+  outline: none;
+  height: 28px;
+  line-height: 1.2;      // 強制行距稍微拉開（預設約1.4）
+  padding: 2px 8px 3px;  // 上下預留呼吸
+  font-size: 0.85rem;       // 更輕盈的字體比例
+}
+::placeholder {
+  letter-spacing: 0.3px; // 提高可讀性
+  color: #aaa;           // 柔和 placeholder
+}
+
+/* hover/focus 小互動（可留可拿掉） */
+.right-sidebar .search-form.widget:hover{
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+.right-sidebar .search-form.widget input[name="keyword"]:focus{
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.06) inset;
+}
+
+/* === 右側搜尋欄：放大鏡靠右＋輸入框微調 === */
+
+/* 外層卡片：保持乾淨陰影 */
+.right-sidebar .search-form.widget {
+  max-width: 240px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-background, #fff);
+  border-radius: 10px;
+  padding: 4px 8px;  /* 比原本更輕盈 */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+/* 輸入框：縮短高度、增加內距 */
+.right-sidebar .search-form.widget input[name="keyword"] {
+  flex: 1;                  /* 佔滿剩餘空間 */
+  border: none;
+  outline: none;
+  height: 26px;
+  line-height: 1.4;
+  font-size: 0.85rem;
+  padding: 0 6px;
+  background: transparent;  /* 去掉白底 */
+}
+
+/* 放大鏡按鈕：靠右對齊、透明化 */
+.right-sidebar .search-form.widget button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  color: var(--theme-color, #888);
+  transition: color 0.2s ease;
+}
+
+/* hover 效果：輕微亮度提升 */
+.right-sidebar .search-form.widget button:hover {
+  color: var(--accent-color, #333);
+}
+
+/* placeholder 顏色柔化 */
+.right-sidebar .search-form.widget input::placeholder {
+  color: #aaa;
+  letter-spacing: 0.3px;
+}
+/* 右欄：搜尋 + 主題切換工具列（不進搜尋框內） */
+.right-sidebar .right-tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+/* 切換鈕外觀：安靜、不搶主內容 */
+.right-sidebar .theme-toggle{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.06);
+  background: var(--card-background, #fff);
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  cursor: pointer;
+  transition: box-shadow .2s ease, transform .08s ease;
+}
+.right-sidebar .theme-toggle svg{
+  width: 18px; height: 18px;
+  color: var(--theme-color, #777);
+}
+.right-sidebar .theme-toggle:hover{ box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+.right-sidebar .theme-toggle:active{ transform: translateY(1px); }
+
+/* RWD：避免擠壓輸入框 */
+@media (max-width: 1024px){
+  .right-sidebar .right-tools { gap: 8px; }
+}
+@media (max-width: 768px){
+  .right-sidebar .right-tools { justify-content: flex-start; }
+  .right-sidebar .theme-toggle { width: 34px; height: 34px; }
+}
+@media (max-width: 640px){
+  .right-sidebar .right-tools { flex-wrap: wrap; }
+  .right-sidebar .search-form.widget { order: 1; }
+  .right-sidebar .theme-toggle { order: 2; }
+}
+/* === Theme Toggle Icon Switcher（右欄切換鈕） === */
+.right-sidebar .theme-toggle .icon-sun { display: none; }
+.right-sidebar .theme-toggle .icon-moon { display: inline-block; }
+.right-sidebar .theme-toggle[data-icon="sun"] .icon-sun  { display: inline-block; }
+.right-sidebar .theme-toggle[data-icon="sun"] .icon-moon { display: none; }
+
+/* 想把主題左下角原生鈕藏起來（保留初始化邏輯） */
+.site-darkmode-toggle { display: none !important; }
+
+.site-description {
+  white-space: pre-line;
+}
+
+

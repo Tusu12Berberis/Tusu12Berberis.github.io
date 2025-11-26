@@ -1,0 +1,82 @@
+{{- $scope := cond .IsHome "homepage" (cond .IsSection "section" (cond .IsPage "page" (cond .IsNode "taxonomy" "single"))) -}}
+{{- $context := .Context -}}
+{{- with (index .Context.Site.Params.widgets $scope) -}}
+    <aside class="sidebar right-sidebar sticky">
+        {{ range $widget := . }}
+            {{ if templates.Exists (printf "partials/widget/%s.html" .type) }}
+                {{- $params := default dict .params -}}
+                
+                {{ if eq .type "search" }}
+                    <div class="right-tools">
+                        {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" $params) }}
+                        
+                        <button id="theme-toggle"
+                                class="theme-toggle" 
+                                type="button" 
+                                title="{{ T `darkMode` | default `切換夜間模式` }}"
+                                aria-label="{{ T `darkMode` | default `切換夜間模式` }}"
+                                aria-pressed="false"
+                                data-icon="moon">
+                            <span class="icon-sun" aria-hidden="true">
+                              {{ partial "helper/icon" "sun" }}
+                            </span>
+                            <span class="icon-moon" aria-hidden="true">
+                              {{ partial "helper/icon" "moon" }}
+                            </span>
+                        </button>
+                    </div>
+                {{ else }}
+                    {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" $params) }}
+                {{ end }}
+                
+            {{ else }}
+                {{ warnf "Widget %s not found" .type }}
+            {{ end }}
+        {{ end }}
+    </aside>
+
+    <script>
+    (function () {
+      var KEY  = 'StackColorScheme';
+      var root = document.documentElement;
+      var btn  = document.getElementById('theme-toggle');
+
+      function saved() {
+        var v = localStorage.getItem(KEY);
+        return (v === 'dark' || v === 'light') ? v : null;
+      }
+      function current() {
+        var s = saved();
+        if (s) return s;
+        return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      function paintIcon() {
+        if (!btn) return;
+        var dark = (root.dataset.scheme || current()) === 'dark';
+        btn.setAttribute('data-icon', dark ? 'moon' : 'sun');
+        btn.setAttribute('aria-pressed', String(dark));
+      }
+      function apply(scheme) {
+        localStorage.setItem(KEY, scheme);
+        root.dataset.scheme = scheme;
+        try { window.dispatchEvent(new CustomEvent('onColorSchemeChange', { detail: scheme })); } catch (e) {}
+        paintIcon();
+      }
+
+      // 初始化：只更新圖示（實際顏色已由 head IIFE / 主題原生套用）
+      paintIcon();
+
+      // 點一下：light ↔ dark（沒有 auto）
+      btn && btn.addEventListener('click', function () {
+        var next = (current() === 'dark') ? 'light' : 'dark';
+        apply(next);
+      });
+
+      // 主題廣播或系統偏好變化時，重繪圖示（不改顏色）
+      window.addEventListener('onColorSchemeChange', paintIcon);
+      matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', function () {
+        if (!saved()) paintIcon();
+      });
+    })();
+    </script>
+{{- end -}}

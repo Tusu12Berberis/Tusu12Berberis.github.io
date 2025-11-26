@@ -1,0 +1,10 @@
+<script>
+(function () {
+  var KEY = 'StackColorScheme', root = document.documentElement;
+  var saved = localStorage.getItem(KEY);
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var scheme = (saved === 'dark' || saved === 'light') ? saved : (prefersDark ? 'dark' : 'light');
+  root.setAttribute('data-scheme', scheme);
+  root.dataset.scheme = scheme;
+})();
+</script>

@@ -1,0 +1,75 @@
+{{- $scope := default "homepage" .Scope -}}
+{{- $context := .Context -}}
+{{- with (index .Context.Site.Params.widgets $scope) -}}
+    <aside class="sidebar right-sidebar sticky">
+        {{ range $widget := . }}
+            {{ if templates.Exists (printf "partials/widget/%s.html" .type) }}
+                {{- $params := default dict .params -}}
+                
+                {{ if eq .type "search" }}
+                    <div class="right-tools">
+                        {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" $params) }}
+                        
+                        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切換夜間模式">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                {{ else }}
+                    {{ partial (printf "widget/%s" .type) (dict "Context" $context "Params" $params) }}
+                {{ end }}
+                
+            {{ else }}
+                {{ warnf "Widget %s not found" .type }}
+            {{ end }}
+        {{ end }}
+    </aside>
+
+    <script>
+    (function () {
+      var KEY = 'StackColorScheme';
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      
+      var moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path></svg>';
+      
+      var sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="12" cy="12" r="4"></circle><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path></svg>';
+
+      function getScheme() {
+        var v = localStorage.getItem(KEY) || 'auto';
+        if (v === 'auto') {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        return v;
+      }
+
+      function updateIcon(scheme) {
+        if (!btn) return;
+        btn.innerHTML = scheme === 'dark' ? sunIcon : moonIcon;
+      }
+
+      function apply(scheme) {
+        root.dataset.scheme = scheme;
+        localStorage.setItem(KEY, scheme);
+        updateIcon(scheme);
+      }
+
+      updateIcon(getScheme());
+
+      if (btn) {
+        btn.addEventListener('click', function () {
+          var next = getScheme() === 'dark' ? 'light' : 'dark';
+          apply(next);
+        });
+      }
+
+      window.addEventListener('onColorSchemeChange', function(e) {
+        if (e.detail) {
+          updateIcon(e.detail);
+        }
+      });
+    })();
+    </script>
+{{- end -}}
