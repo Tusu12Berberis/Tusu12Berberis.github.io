@@ -1,6 +1,6 @@
-{{- $scope := cond .IsHome "homepage" (cond .IsSection "section" (cond .IsPage "page" (cond .IsNode "taxonomy" "single"))) -}}
 {{- $context := .Context -}}
-{{- with (index .Context.Site.Params.widgets $scope) -}}
+{{- $scope := cond $context.IsHome "homepage" (cond $context.IsSection "section" (cond $context.IsPage "page" (cond $context.IsNode "taxonomy" "single"))) -}}
+{{- with (index $context.Site.Params.widgets $scope) -}}
     <aside class="sidebar right-sidebar sticky">
         {{ range $widget := . }}
             {{ if templates.Exists (printf "partials/widget/%s.html" .type) }}
