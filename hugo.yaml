@@ -42,6 +42,8 @@ permalinks:
 params:
     mainSections:
         - post  # 主要文章分類
+        - novel # 小說也當成首頁主區塊
+        - spirit 
     featuredImageField: image   # 封面圖片欄位名稱
     rssFullContent: true  # RSS 顯示全文
     favicon: # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)  # 網站小圖示，可設定 /favicon.ico
@@ -51,8 +53,8 @@ params:
         customText:
 
     dateFormat:  # 日期格式設定
-        published: Jan 02, 2006
-        lastUpdated: Jan 02, 2006 15:04 MST
+        published: 2006/01/02
+        lastUpdated: 2006/01/02 15:04
 
     sidebar:   # 側邊欄（頭像、表情、介紹）
         emoji: 
@@ -62,12 +64,12 @@ params:
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png  # 頭像圖片路徑
+            src: img/avatar-2.png  # 頭像圖片路徑
 
     article:               # 文章頁面設定
         math: false        # 是否開啟數學公式顯示
-        toc: true          # 是否顯示目錄
-        readingTime: true  # 是否顯示閱讀時間
+                  # 是否顯示目錄
+        readingTime: false  # 是否顯示閱讀時間
         license:
             enabled: true
             default: Licensed under CC BY-NC-SA 4.0

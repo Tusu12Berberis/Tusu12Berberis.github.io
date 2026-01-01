@@ -30,4 +30,7 @@ resources/_gen/
 .DS_Store
 assets/jsconfig.json
 
-
+_fb_export/
+error.txt
+hugo_build_log.txt
+*.py
