@@ -4,7 +4,7 @@ date: 2026-01-19T10:14:52+08:00
 draft: false
 type: post
 categories: ["Spirit"]
-image: 
+image: C5.jpg
 ---
 
 昨天與朋友吃飯，在外面操作正午冥想，相當溫柔又舒服。
@@ -53,3 +53,6 @@ image:
 
 希望這不是立 flag ！
 
+![聽說是要一口吃的](C2.jpg)  ![咖哩雞(?)](C3.jpg) 
+
+![是咖哩羊~~~~](C5.jpg)  ![高價蛋糕就是好吃](C1.jpg) 
