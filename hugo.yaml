@@ -30,7 +30,7 @@ services:
         shortname: "hugo-theme-stack"
     # GA Tracking ID  
     googleAnalytics:  # Google 分析追蹤 ID
-        id:
+        id: G-TVG7TN6D10
 
 pagination:
     pagerSize: 10  # 每頁顯示文章數量
