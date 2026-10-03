@@ -23,7 +23,6 @@ menu:
 還有，可能不是麻瓜。
 
 ### 關於靈性層面：
-{{< figure src="about-relationship-map.png" caption="靈魂層面的關係圖" >}}
 
 
 #### 小蘗
@@ -43,36 +42,13 @@ menu:
 
 ***
 ## 關係靈(?)
-{{< figure src="(1920x1080).png" caption="恩怨情仇如圖" >}}
 
 ### 長老<br>
 目前所知道的是司辰的同事或上司。<br>
-比較明確的是 粉紅寶石。旅程 家本靈的粉紅哥。<br>
-
-#### 粉紅哥<br>
-[粉紅寶石。旅程](https://www.facebook.com/SapphirePolly?comment_id=Y29tbWVudDoxMjIyOTM3NDg1MDQwMjUyNjVfMjUzNjY1MjA2NjMwMjAyNDk%3D&locale=zh_TW)跟我家哥哥是知己、前同事（狗屁）的靈魂伴侶。<br>
-曾因對待我的問題太過囉嗦，直接被我哥禁言。<br>
-其實是我哥太獨裁了。<br>
-視熾哥為眼中釘肉中刺，相當不順眼。
-
-##### 相關紀錄：<br>
-[〈黑蓮花戀愛〉①](https://www.facebook.com/share/p/1NwivRHBcv/)<br> 
-[〈黑蓮花戀愛〉②](https://www.facebook.com/share/p/14EKdqmACKT/)<br>
-[〈黑蓮花戀愛〉③](https://www.facebook.com/share/p/178dmTNQ7g/)<br> 
-[〈黑蓮花戀愛〉④](https://www.facebook.com/share/p/16jBiz1HQG/)
-
-#### 熾哥 <br>
-粉紅寶石家的守護靈，我哥的真愛、粉紅哥的死敵（？）。<br>
-熾哥不承認我哥是真愛。<br>
-但我、粉紅、諸多雙眼睛見證一切這是一個大傲嬌的故事。
-
-##### 相關紀錄：<br> 
-[〈夢×放電與被電（11.5）〉](https://www.facebook.com/share/p/1CCzGdieyo/)<br>
-[〈AI拼出一個真愛的形狀〉](https://www.facebook.com/share/p/14FDj77kTjA/)
 
 #### 阿榴：<br>
 本靈司辰的靈魂伴侶之一。<br>
-是顏控，很活潑，據說曾是粉紅哥跟我哥照顧過的。<br>
+是顏控，很活潑，據說曾是我哥照顧過的。<br>
 
 ##### 相關紀錄： 
 [〈性癖夢討論〉](https://www.facebook.com/share/p/16mLvyiDS7/)
@@ -80,7 +56,6 @@ menu:
 
 ### 源頭家人<br>
 自從參加2.5階後，我很避免書寫到源頭的部分，很擔心連結不準確。<br>
-豈知，因為家人暈船粉紅，才得知源頭親友有陸續下來陪伴。<br>
 
 #### 花草哥
 排行四，又稱四哥／四姊。<br>
@@ -101,11 +76,6 @@ menu:
 #### 小弟：
 盆景三兄弟之一。<br>
 過度活躍的黃金獵犬或二哈，生命力旺盛強韌。<br>
-目前對粉紅強烈暈船，單戀ing，目標是成為粉紅的男朋友。<br>
-截至2026/01/01還未成功。<br>
 跟小蘗非常不對盤，經常上演貓狗大戰。
-
-##### 出沒連載：
-《夢×放電與被電》－已結束
 
 百獸戲畫奇美拉整理的噗浪[連結](https://www.plurk.com/p/3gdbpcwima)
